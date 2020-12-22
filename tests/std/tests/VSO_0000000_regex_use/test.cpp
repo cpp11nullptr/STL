@@ -581,7 +581,7 @@ void test_GH_993_regex_character_class_case_insensitive_search() {
 }
 
 void test_GH_731_multiple_matches_to_capture() {
-    std::vector<std::string> groups{ "AAA", "BBB" };
+    std::vector<std::string> groups{"AAA", "BBB"};
     g_regexTester.should_capture_groups("AAA BBB", R"((A+)\s*(B+)?\s*B*)", groups);
 }
 

@@ -117,14 +117,15 @@ public:
         }
     }
 
-    void should_capture_groups(const std::string& subject, const std::string& pattern, const std::vector<std::string>& groups) {
+    void should_capture_groups(
+        const std::string& subject, const std::string& pattern, const std::vector<std::string>& groups) {
         try {
             const std::regex r(pattern);
             std::smatch m;
 
             if (!std::regex_match(subject, m, r)) {
                 printf(R"(Expected regex("%s") to match "%s".)"
-                    "\n",
+                       "\n",
                     pattern.c_str(), subject.c_str());
                 fail_regex();
                 return;
@@ -132,7 +133,7 @@ public:
 
             if (m[0] != subject) {
                 printf(R"(should_capture("%s", "%s"): m[0] == "%s")"
-                    "\n",
+                       "\n",
                     subject.c_str(), pattern.c_str(), m[0].str().c_str());
                 fail_regex();
             }
@@ -140,7 +141,7 @@ public:
             for (size_t i = 0; i < groups.size(); ++i) {
                 if (m[i + 1] != groups[i]) {
                     printf(R"(should_capture("%s", "%s"): m[%zd] == "%s")"
-                        "\n",
+                           "\n",
                         groups[i].c_str(), pattern.c_str(), i, m[i + 1].str().c_str());
                     fail_regex();
                 }
