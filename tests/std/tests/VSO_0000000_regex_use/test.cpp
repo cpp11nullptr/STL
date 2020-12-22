@@ -580,6 +580,11 @@ void test_GH_993_regex_character_class_case_insensitive_search() {
     }
 }
 
+void test_GH_731_multiple_matches_to_capture() {
+    std::vector<std::string> groups{ "AAA", "BBB" };
+    g_regexTester.should_capture_groups("AAA BBB", R"((A+)\s*(B+)?\s*B*)", groups);
+}
+
 int main() {
     test_dev10_449367_case_insensitivity_should_work();
     test_dev11_462743_regex_collate_should_not_disable_regex_icase();
@@ -607,6 +612,7 @@ int main() {
     test_VSO_225160_match_eol_flag();
     test_VSO_226914_word_boundaries();
     test_GH_993_regex_character_class_case_insensitive_search();
+    test_GH_731_multiple_matches_to_capture();
 
     return g_regexTester.result();
 }
